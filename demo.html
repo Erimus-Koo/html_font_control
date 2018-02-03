@@ -17,17 +17,56 @@
     <link rel="shortcut icon" href="http://erimus.cc/favicon.ico">
     <!-- 载入jquery -->
     <script src="http://erimus.cc/plugins/jquery/jquery.min.js"></script>
+    <!-- 添加css -->
+    <style type="text/css">
+    /*基础部分*/
+
+    html,
+    body {
+        /*height: 100%;*/
+        margin: 0 auto;
+        padding: 0 10px;
+        max-width: 800px;
+        position: relative;
+        font-size: 16px line-height: 1.5;
+        font-family: sans-serif;
+        font-weight: 400;
+        color: #444;
+        background: #FFE;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+        color: #444;
+    }
+    /*════════════════════ nav*/
+
+    #nav {
+        height: 44px;
+        line-height: 44px;
+        position: relative;
+    }
+
+    #nav #right {
+        float: right;
+    }
+    </style>
 </head>
 
 <body>
-    <div class="nav">
+    <div id="nav">
         <a href="http://www.8bei8.com/">太极书馆</a>
         <a href="http://www.8bei8.com/book">古籍</a>
         <div id='right'>
-            <a onclick="code2wm(1);" class="code2wm ie6hidden">二维码</a>
-            <a class="readSet" onclick="readSet();">设置</a>
-            <a href="http://www.8bei8.com/app/message/index.html?bookUrl=http://www.8bei8.com/book/daxue_2.html&amp;bookName=《大学》第2页" target="_blank">纠错</a>
             <a href="http://www.8bei8.com/book/daxue.html" id="pageTurn">目录</a>
+            <a id="readSet" onclick="readSet();">设置</a>
+            <a href="http://www.8bei8.com/app/message/index.html?bookUrl=http://www.8bei8.com/book/daxue_2.html&amp;bookName=《大学》第2页" target="_blank">纠错</a>
+            <a onclick="code2wm(1);" class="code2wm ie6hidden">二维码</a>
         </div>
     </div>
     <div style="" class="article">
