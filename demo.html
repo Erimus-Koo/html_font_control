@@ -3,23 +3,23 @@
 
 <head>
     <meta charset="utf-8">
-    <title>大学 - 第二章 - 全文在线阅读 - 太极书馆</title>
+    <title>大學 - 第二章 - 全文在線閱讀 - 太極書館</title>
     <meta http-equiv="X-UA-Compatible" content="chrome=1;IE=13;IE=12;IE=11;IE=10;IE=9;IE=8;">
-    <meta name="description" content="《大学》全文在线阅读">
-    <meta name="keywords" content="大学,大学白话,大学翻译,大学注解,library, reading, learning, reading, online, free, culture, Chinese culture, classical Chinese, classical">
+    <meta name="description" content="《大學》全文在線閱讀">
+    <meta name="keywords" content="大學,大學白話,大學翻譯,大學註解,library, reading, learning, reading, online, free, culture, Chinese culture, classical Chinese, classical">
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <!-- <link rel="StyleSheet" href="http://www.8bei8.com/nav.css?20171125"> -->
     <!-- <link rel="StyleSheet" href="bookMenu.css?20171125"> -->
     <!-- <script src="mobileSet.js?20171125"></script> -->
-    <!-- 支持移动端适配 -->
+    <!-- 支持移動端適配 -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1">
-    <!-- 这里可以设置图标 -->
+    <!-- 這裏可以設置圖標 -->
     <link rel="shortcut icon" href="http://erimus.cc/favicon.ico">
-    <!-- 载入jquery -->
+    <!-- 載入jquery -->
     <script src="http://erimus.cc/plugins/jquery/jquery.min.js"></script>
     <!-- 添加css -->
     <style type="text/css">
-    /*基础部分*/
+    /*基礎部分*/
 
     html,
     body {
@@ -32,8 +32,6 @@
         line-height: 1.8;
         font-family: sans-serif;
         font-weight: 400;
-        color: #444;
-        background: #FFE;
         -webkit-tap-highlight-color: transparent;
     }
 
@@ -43,7 +41,6 @@
 
     a {
         text-decoration: none;
-        color: #444;
     }
     /*════════════════════ nav*/
 
@@ -80,7 +77,7 @@
         display: inline-flex;
         flex: 0 0 auto;
         max-width: 80%;
-        /*限制宽度 超过自动换行*/
+        /*限制寬度 超過自動換行*/
     }
 
     header h1:before,
@@ -123,6 +120,7 @@
         border-radius: 99px;
         border: 1px solid;
         padding: 0 .5em;
+        font-family: sans-serif;
     }
 
     #yuanwen .tips {
@@ -138,7 +136,7 @@
     }
 
     #tijie .tips {
-        color: #D62;
+        color: #68B;
     }
 
     #yuanwen {
@@ -185,19 +183,19 @@
     }
 
     footer a {
+        font-family: sans-serif;
         font-size: .8em;
         padding: .2em .5em;
         border: 1px solid;
         border-radius: .25em;
         margin: .25em;
-        color: #B86;
+        color: #B86!important;
         transition: .5s;
         flex: 0 0 auto;
     }
 
     footer a:hover {
-        background: #D44;
-        color: white;
+        color: #F44!important;
     }
 
     footer #placeholder {
@@ -215,37 +213,43 @@
         background: #FFF;
         border-radius: 10px;
         font: 18px/44px sans-serif;
+        color: #444;
         text-align: center;
-        box-shadow: 0 0 10px rgba(0,0,0,.2);
-        position:absolute;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        position: fixed;
         z-index: 99;
-        right:20px;
-        top:-500px;
+        right: 20px;
+        top: -500px;
         transition: .5s;
     }
+
     #setting.on {
-        top:40px;
+        top: 40px;
     }
 
     #setting div {
         display: flex;
         border-bottom: 1px solid #DDD;
         justify-content: center;
-        cursor:pointer;
+        cursor: pointer;
     }
 
     #setting div:last-child {
         border: none;
     }
 
-    #setting a {
+    #setting b {
         flex: 1 1 50%;
         height: 44px;
         border-right: 1px solid #DDD;
     }
 
-    #setting a:last-child,
-    #setting #bg a {
+    #setting #size,
+    #setting #weight {
+        flex: 1 1 100%;
+    }
+
+    #setting b:last-child {
         border: none;
     }
 
@@ -265,6 +269,30 @@
         font-weight: bolder;
     }
 
+    .white,
+    .white a {
+        color: #000;
+        background: #FFF;
+    }
+
+    .warm,
+    .warm a {
+        color: #444;
+        background: #FFE;
+    }
+
+    .paper,
+    .paper a {
+        color: #444;
+        background: #EED url(http://www.8bei8.com/IndexFiles/images/bg.png);
+    }
+
+    .dark,
+    .dark a {
+        color: #DDD;
+        background: #222;
+    }
+
     #setting #sans {
         font-family: 'PingFang SC', 'PingFang TC', 'Microsoft Yahei', sans-serif;
     }
@@ -272,118 +300,193 @@
     #setting #serif {
         font-family: 'Hiragino Mincho ProN', 'Simsun', serif;
     }
- #setting #close{
-    color:#888;
-    font-size: .8em;
- }
+
+    #setting #close {
+        color: #88D;
+        font-size: .8em;
+    }
     </style>
 </head>
 
-<body>
+<body class="warm">
     <!-- font setting panel -->
-    <div id="setting">
-        <div><a id="small">小</a><a id="big">大</a></div>
-        <div><a id="light">细</a><a id="bold">粗</a></div>
-        <div id="bg">
-            <a id="white">白</a>
-            <a id="paper">纸</a>
-            <a id="warm">暖</a>
-            <a id="dark">夜</a>
+    <div id="setting" class="">
+        <div><b id="small">小</b><b id="size">18px</b><b id="big">大</b></div>
+        <div><b id="light">細</b><b id="weight">400</b><b id="bold">粗</b></div>
+        <div id="color">
+            <b class="white">白</b>
+            <b class="warm">暖</b>
+            <b class="paper">紙</b>
+            <b class="dark">夜</b>
         </div>
-        <div id="sans">黑体</div>
-        <div id="serif">宋体</div>
-        <div id="close">关闭面板</div>
+        <div id="family">
+            <b id="sans">黑體</b>
+            <b id="serif">宋體</b>
+        </div>
+        <div id="close">關閉面板</div>
     </div>
-    <!-- 顶部nav。考虑到功能使用频度，以及手机的可视范围，所以不做固定。 -->
+    <!-- 頂部nav。考慮到功能使用頻度，以及手機的可視範圍，所以不做固定。 -->
     <nav>
-        <a href="http://www.8bei8.com/">太极书馆</a>
+        <a href="http://www.8bei8.com/">太極書館</a>
         <a href="http://www.8bei8.com/book">古籍</a>
         <div id='right'>
-            <a href="http://www.8bei8.com/book/daxue.html" id="pageTurn">目录</a>
-            <a id="readSet" onclick="readSet();">设置</a>
-            <a href="http://www.8bei8.com/app/message/index.html?bookUrl=http://www.8bei8.com/book/daxue_2.html&amp;bookName=《大学》第2页" target="_blank">纠错</a>
-            <a href="" onclick="">二维码</a>
+            <a href="http://www.8bei8.com/book/daxue.html" id="pageTurn">目錄</a>
+            <a id="readSet" style="color:red">設置</a>
+            <a href="http://www.8bei8.com/app/message/index.html?bookUrl=http://www.8bei8.com/book/daxue_2.html&amp;bookName=《大學》第2頁" target="_blank">糾錯</a>
+            <a href="" onclick="">二維碼</a>
         </div>
     </nav>
     <article>
         <header>
-            <h1><div>大学</div></h1>
+            <h1><div>大學</div></h1>
             <h2>第二章</h2>
         </header>
-        <!-- 没有搞懂这一级的分类 随便套个h3 -->
-        <h3>三纲八目的追求</h3>
+        <!-- 沒有搞懂這一級的分類 隨便套個h3 -->
+        <h3>三綱八目的追求</h3>
         <!--
-         这里tips挂左边效果是蛮好，但是到移动端就没这么大空间了。
-        另外层级结构可以反过来 yuanwen在外层 里面套个tips 逻辑清晰点
-        tips可以提出用css的before伪类来处理，但考虑到阅读模式等，就还是保留。
-        原本的copyright混淆，这个你自己处理下。
+         這裏tips掛左邊效果是蠻好，但是到移動端就沒這麽大空間了。
+        另外層級結構可以反過來 yuanwen在外層 裏面套個tips 邏輯清晰點
+        tips可以提出用css的before偽類來處理，但考慮到閱讀模式等，就還是保留。
+        原本的copyright混淆，這個你自己處理下。
 
-        标注部分，改成了类似维基百科的标准。
-        点击可在标注和注释间跳转。
+        標註部分，改成了類似維基百科的標準。
+        點擊可在標註和註釋間跳轉。
         -->
         <section id="yuanwen">
             <div class="tips">原文</div>
-            <p>大学之道<sup id="ref_1"><a href="#cite_1">1</a></sup>，在明明德<sup id="ref_2"><a href="#cite_2">2</a></sup>，在亲民<sup id="ref_3"><a href="#cite_3">3</a></sup>，在止于至善。知止<sup id="ref_4"><a href="#cite_4">4</a></sup>而后有定；定而后能静；静而后能安；安而后能虑；虑而后能得<sup id="ref_5"><a href="#cite_5">5</a></sup>。物有本末，事有终始。知所先后，则近道矣。古之欲明明德于天下者，先治其国；欲治其国者，先齐其家<sup id="ref_6"><a href="#cite_6">6</a></sup>；欲齐其家者，先修其身<sup id="ref_7"><a href="#cite_7">7</a></sup>；欲修其身者，先正其心；欲正其心者，先诚其意；欲诚其意者，先致其知<sup id="ref_8"><a href="#cite_8">8</a></sup>；致知在格物<sup id="ref_9"><a href="#cite_9">9</a></sup>。物格而后知至；知至而后意诚；意诚而后心正；心正而后身修；身修而后家齐；家齐而后国治；国治而后天下平。自天子以至于庶人<sup id="ref_10"><a href="#cite_10">10</a></sup>，壹是皆以修身为本<sup id="ref_11"><a href="#cite_11">11</a></sup>。其本乱而未治者否矣<sup id="ref_12"><a href="#cite_12">12</a></sup>。其所厚者薄，而其所薄者厚<sup id="ref_13"><a href="#cite_13">13</a></sup>，未之有也<sup id="ref_14"><a href="#cite_14">14</a></sup>！</p>
+            <p>大學之道<sup id="ref_1"><a href="#cite_1">1</a></sup>，在明明德<sup id="ref_2"><a href="#cite_2">2</a></sup>，在親民<sup id="ref_3"><a href="#cite_3">3</a></sup>，在止於至善。知止<sup id="ref_4"><a href="#cite_4">4</a></sup>而後有定；定而後能靜；靜而後能安；安而後能慮；慮而後能得<sup id="ref_5"><a href="#cite_5">5</a></sup>。物有本末，事有終始。知所先後，則近道矣。古之欲明明德於天下者，先治其國；欲治其國者，先齊其家<sup id="ref_6"><a href="#cite_6">6</a></sup>；欲齊其家者，先修其身<sup id="ref_7"><a href="#cite_7">7</a></sup>；欲修其身者，先正其心；欲正其心者，先誠其意；欲誠其意者，先致其知<sup id="ref_8"><a href="#cite_8">8</a></sup>；致知在格物<sup id="ref_9"><a href="#cite_9">9</a></sup>。物格而後知至；知至而後意誠；意誠而後心正；心正而後身修；身修而後家齊；家齊而後國治；國治而後天下平。自天子以至於庶人<sup id="ref_10"><a href="#cite_10">10</a></sup>，壹是皆以修身為本<sup id="ref_11"><a href="#cite_11">11</a></sup>。其本亂而未治者否矣<sup id="ref_12"><a href="#cite_12">12</a></sup>。其所厚者薄，而其所薄者厚<sup id="ref_13"><a href="#cite_13">13</a></sup>，未之有也<sup id="ref_14"><a href="#cite_14">14</a></sup>！</p>
         </section>
         <section id="zhushi">
-            <div class="tips">注释</div>
-            <!-- 直接用ol，safari阅读模式不认。 -->
-            <p id="cite_1">1. <a href="#ref_1">大学之道</a>：大学的宗旨。“大学”一词在古代有两种含义：一是“博学”的意思；二是相对于小学而言的“大人之学”。古人八岁人小学，学习“洒扫应对进退、礼乐射御书数”等文化基础知识和礼节；十五岁人大学，学习伦理、政治、哲学等“穷理正心，修己治人”的学问。所以，后一种含义其实也和前一种含义有相通的地方，同样有“博学”的意思。”道“的本义是道路，引申为规律、原则等，在中国古代哲学、政治学里，也指宇宙万物的本原、个体，一定的政治观或思想体系等，在不同的上下文环境里有不同的意思。</p>
-            <p id="cite_2">2. <a href="#ref_2">明明德</a>：前一个“明”作动词，有使动的意味，即“使彰明”，也就是发扬、弘扬的意思。后一个“明”作形容词，明德也就是光明正大的品德。</p>
-            <p id="cite_3">3. <a href="#ref_3">亲民</a>：根据后面的“传”文，“亲”应为“新”，即革新、弃旧图新。亲民，也就是新民，使人弃旧图新、去恶从善。</p>
-            <p id="cite_4">4. <a href="#ref_4">知止</a>：知道目标所在。</p>
-            <p id="cite_5">5. <a href="#ref_5">得</a>：收获。</p>
-            <p id="cite_6">6. <a href="#ref_6">齐其家</a>：管理好自己的家庭或家族，使家庭或家族和和美美，蒸蒸日上，兴旺发达。</p>
-            <p id="cite_7">7. <a href="#ref_7">修其身</a>：修养自身的品性。</p>
-            <p id="cite_8">8. <a href="#ref_8">致其知</a>：使自己获得知识。</p>
-            <p id="cite_9">9. <a href="#ref_9">格物</a>：认识、研究万事万物。</p>
+            <div class="tips">註釋</div>
+            <!-- 直接用ol，safari閱讀模式不認。 -->
+            <p id="cite_1">1. <a href="#ref_1">大學之道</a>：大學的宗旨。“大學”一詞在古代有兩種含義：一是“博學”的意思；二是相對於小學而言的“大人之學”。古人八歲人小學，學習“灑掃應對進退、禮樂射禦書數”等文化基礎知識和禮節；十五歲人大學，學習倫理、政治、哲學等“窮理正心，修己治人”的學問。所以，後一種含義其實也和前一種含義有相通的地方，同樣有“博學”的意思。”道“的本義是道路，引申為規律、原則等，在中國古代哲學、政治學裏，也指宇宙萬物的本原、個體，一定的政治觀或思想體系等，在不同的上下文環境裏有不同的意思。</p>
+            <p id="cite_2">2. <a href="#ref_2">明明德</a>：前一個“明”作動詞，有使動的意味，即“使彰明”，也就是發揚、弘揚的意思。後一個“明”作形容詞，明德也就是光明正大的品德。</p>
+            <p id="cite_3">3. <a href="#ref_3">親民</a>：根據後面的“傳”文，“親”應為“新”，即革新、棄舊圖新。親民，也就是新民，使人棄舊圖新、去惡從善。</p>
+            <p id="cite_4">4. <a href="#ref_4">知止</a>：知道目標所在。</p>
+            <p id="cite_5">5. <a href="#ref_5">得</a>：收獲。</p>
+            <p id="cite_6">6. <a href="#ref_6">齊其家</a>：管理好自己的家庭或家族，使家庭或家族和和美美，蒸蒸日上，興旺發達。</p>
+            <p id="cite_7">7. <a href="#ref_7">修其身</a>：修養自身的品性。</p>
+            <p id="cite_8">8. <a href="#ref_8">致其知</a>：使自己獲得知識。</p>
+            <p id="cite_9">9. <a href="#ref_9">格物</a>：認識、研究萬事萬物。</p>
             <p id="cite_10">10. <a href="#ref_10">庶人</a>：指平民百姓。</p>
             <p id="cite_11">11. <a href="#ref_11">壹是</a>：都是。本：根本。</p>
-            <p id="cite_12">12. <a href="#ref_12">末</a>：相对于本而言，指枝末、枝节。</p>
-            <p id="cite_13">13. <a href="#ref_13">厚者薄</a>：该重视的不重视。薄者厚：不该重视的却加以重视。</p>
-            <p id="cite_14">14. <a href="#ref_14">未之有也</a>：即未有之也。没有这样的道理(事情、做法等)。</p>
+            <p id="cite_12">12. <a href="#ref_12">末</a>：相對於本而言，指枝末、枝節。</p>
+            <p id="cite_13">13. <a href="#ref_13">厚者薄</a>：該重視的不重視。薄者厚：不該重視的卻加以重視。</p>
+            <p id="cite_14">14. <a href="#ref_14">未之有也</a>：即未有之也。沒有這樣的道理(事情、做法等)。</p>
         </section>
         <section id="yiwen">
-            <div class="tips">译文</div>
-            <p>大学的宗旨在于弘扬光明正大的品德，在于使人弃旧图新，在于使人达到最完善的境界。知道应达到的境界才能够志向坚定；志向坚定才能够镇静不躁；镇静不躁才能够心安理得；心安理得才能够思虑周祥；思虑周祥才能够有所收获。每样东西都有根本有枝未，每件事情都有开始有终结。明白了这本末始终的道理，就接近事物发展的规律了。古代那些要想在天下弘扬光明正大品德的人，先要治理好自己的国家；要想治理好自己的国家，先要管理好自己的家庭和家族；要想管理好自己的家庭和家族，先要修养自身的品性；要想修养自身的品性，先要端正自己的心思；要想端正自己的心思，先要使自己的意念真诚；要想使自己的意念真诚，先要使自己获得知识；获得知识的途径在于认识、研究万事万物。通过对万事万物的认识、研究后才能获得知识；获得知识后意念才能真诚；意念真诚后心思才能端正；心思端正后才能修养品性；品性修养后才能管理好家庭和家族；管理好家庭和家族后才能治理好国家；治理好国家后天下才能太平。上自国家元首，下至平民百姓，人人都要以修养品性为根本。若这个根本被扰乱了，家庭、家族、国家、天下要治理好是不可能的。不分轻重缓急，本末倒置却想做好事情，这也同样是不可能的！</p>
+            <div class="tips">譯文</div>
+            <p>大學的宗旨在於弘揚光明正大的品德，在於使人棄舊圖新，在於使人達到最完善的境界。知道應達到的境界才能夠誌向堅定；誌向堅定才能夠鎮靜不躁；鎮靜不躁才能夠心安理得；心安理得才能夠思慮周祥；思慮周祥才能夠有所收獲。每樣東西都有根本有枝未，每件事情都有開始有終結。明白了這本末始終的道理，就接近事物發展的規律了。古代那些要想在天下弘揚光明正大品德的人，先要治理好自己的國家；要想治理好自己的國家，先要管理好自己的家庭和家族；要想管理好自己的家庭和家族，先要修養自身的品性；要想修養自身的品性，先要端正自己的心思；要想端正自己的心思，先要使自己的意念真誠；要想使自己的意念真誠，先要使自己獲得知識；獲得知識的途徑在於認識、研究萬事萬物。通過對萬事萬物的認識、研究後才能獲得知識；獲得知識後意念才能真誠；意念真誠後心思才能端正；心思端正後才能修養品性；品性修養後才能管理好家庭和家族；管理好家庭和家族後才能治理好國家；治理好國家後天下才能太平。上自國家元首，下至平民百姓，人人都要以修養品性為根本。若這個根本被擾亂了，家庭、家族、國家、天下要治理好是不可能的。不分輕重緩急，本末倒置卻想做好事情，這也同樣是不可能的！</p>
         </section>
         <section id="tijie">
-            <div class="tips">题解</div>
-            <p>这里所展示的，是儒学三纲八目的追求。
-                <br> 所谓三纲，是指明德、新民、止于至善。它既是《大学》的纲领旨趣，也是儒学“垂世立教”的目标所在。
-                <br> 所谓八目，是指格物、致知、诚意、正心、修身、齐家、治国、平天下。它既是为达到“三纲”而设计的条目工夫，也是儒学为我们所展示的人生进修阶梯。
-                <br> 纵览四书五经，我们发现，儒家的全部学说实际上都是循着这三纲八目而展开的。所以，抓住这三纲八目你就等于抓住了一把打开儒学大门的钥匙。循着这进修阶梯一步一个脚印，你就会登堂入室，领略懦学经典的奥义。就这里的阶梯本身而言，实际上包括“内修”和“外治”两大方面：前面四级“格物、致知，诚意、正心”是“内修”；后面三纲“齐家、治国、平天下”是“外治”。而其中间的“修身”一环，则是连结“年修”和“外治”两方面的枢纽，它与前面的“内修”项目连在一起，是“独善其身”；它与后面的“外治”项目连在一起，是“兼善天下”。
-                <br> 两千多年来，一代又一代中国知识分子“穷则独善其身，达则兼善天下”(《孟子·尽心下》)，把生命的历程铺设在这一阶梯之上。所以，它实质上已不仅仅是一系列学说怯质的进修步骤，而是具有浓厚实践色彩的人生追求阶梯了。它铸造了一代又一代中国知识分子的人格心理，时至今日，仍然在我们身上发挥着潜移默化的作用。不管你是否意识明确，不管你积极还是消极，“格、致、诚、正，修、齐、治、平”的观念总是或隐或显地在影响看你的思想，左右着你的行动，使你最终发现，自己的人生历程也不过是在这儒学的进修阶梯上或近或远地展开。
-                <br> 事实上，作为中国知识分子，又有几人是真正出道入佛的野鹤闲云、隐逸高士呢？说到底，依然是十人九儒，如此而已。
+            <div class="tips">題解</div>
+            <p>這裏所展示的，是儒學三綱八目的追求。
+                <br> 所謂三綱，是指明德、新民、止於至善。它既是《大學》的綱領旨趣，也是儒學“垂世立教”的目標所在。
+                <br> 所謂八目，是指格物、致知、誠意、正心、修身、齊家、治國、平天下。它既是為達到“三綱”而設計的條目工夫，也是儒學為我們所展示的人生進修階梯。
+                <br> 縱覽四書五經，我們發現，儒家的全部學說實際上都是循著這三綱八目而展開的。所以，抓住這三綱八目你就等於抓住了一把打開儒學大門的鑰匙。循著這進修階梯一步一個腳印，你就會登堂入室，領略懦學經典的奧義。就這裏的階梯本身而言，實際上包括“內修”和“外治”兩大方面：前面四級“格物、致知，誠意、正心”是“內修”；後面三綱“齊家、治國、平天下”是“外治”。而其中間的“修身”一環，則是連結“年修”和“外治”兩方面的樞紐，它與前面的“內修”項目連在一起，是“獨善其身”；它與後面的“外治”項目連在一起，是“兼善天下”。
+                <br> 兩千多年來，一代又一代中國知識分子“窮則獨善其身，達則兼善天下”(《孟子·盡心下》)，把生命的歷程鋪設在這一階梯之上。所以，它實質上已不僅僅是一系列學說怯質的進修步驟，而是具有濃厚實踐色彩的人生追求階梯了。它鑄造了一代又一代中國知識分子的人格心理，時至今日，仍然在我們身上發揮著潛移默化的作用。不管你是否意識明確，不管你積極還是消極，“格、致、誠、正，修、齊、治、平”的觀念總是或隱或顯地在影響看你的思想，左右著你的行動，使你最終發現，自己的人生歷程也不過是在這儒學的進修階梯上或近或遠地展開。
+                <br> 事實上，作為中國知識分子，又有幾人是真正出道入佛的野鶴閑雲、隱逸高士呢？說到底，依然是十人九儒，如此而已。
             </p>
         </section>
     </article>
     <footer>
-        <a href="#" class="backTop">顶部</a>
-        <a href="">目录</a>
-        <a href="" title=" 键盘左键 <- " id="prevPage">上一页</a>
+        <a href="#" class="backTop">頂部</a>
+        <a href="">目錄</a>
+        <a href="" title=" 鍵盤左鍵 <- " id="prevPage">上一頁</a>
         <a id="placeholder">占位</a>
-        <a href="" title=" 键盘右键 -> " id="nextPage">下一页</a>
+        <a href="" title=" 鍵盤右鍵 -> " id="nextPage">下一頁</a>
     </footer>
     <!-- qrcode -->
     <div id="code2wmMask">
         <div id="code2wm" style="background:url(http://pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=http://www.8bei8.com/book/daxue_2.html) center center no-repeat;" onclick="code2wm(0);"></div>
     </div>
     <script>
-        // open setting paenl
-        $('#readSet').click(function(){
-            $('#setting').toggleClass('on')
-        })
-        // close setting paenl
-        $('#setting #close').click(function(){
-            $('#setting').removeClass('on')
-        })
-        // reduce font size
-        $('#setting #small').click(function(){
-            size = $('body').css('font-size')
-            console.log(size)
-            $('#setting').removeClass('on')
-        })
+    // setting panel ══════════════════════════════
+    // open press '设置'
+    $('#readSet').click(function() {
+        $('#setting').toggleClass('on')
+    })
+    // close
+    $('#setting #close').click(function() {
+        $('#setting').removeClass('on')
+    })
+
+    // font size ══════════════════════════════
+    sizeChange = function(size) {
+        localStorage.font_size = size
+        console.log(size)
+        $('body').css('font-size', size)
+        $('#setting #size').text(size + 'px')
+    }
+
+    // font size - reduce
+    $('#setting #small').click(function() {
+        size = $('body').css('font-size')
+        size = Math.max(parseInt(size) - 1, 12)
+        sizeChange(size)
+    })
+    // font size - enlarge
+    $('#setting #big').click(function() {
+        size = $('body').css('font-size')
+        size = Math.min(parseInt(size) + 1, 32)
+        sizeChange(size)
+    })
+
+    // font weight ══════════════════════════════
+    weightChange = function(weight) {
+        localStorage.font_weight = weight
+        console.log(weight)
+        $('body').css('font-weight', weight)
+        $('#setting #weight').text(weight)
+    }
+    // font weight - lighter
+    $('#setting #light').click(function() {
+        weight = $('body').css('font-weight')
+        weight = Math.max(parseInt(weight) - 100, 100)
+        weightChange(weight)
+    })
+    // font weight - bolder
+    $('#setting #bold').click(function() {
+        weight = $('body').css('font-weight')
+        weight = Math.min(parseInt(weight) + 100, 900)
+        weightChange(weight)
+    })
+
+    // color style ══════════════════════════════
+    $('#setting #color b').click(function() {
+        cls = $(this).attr('class')
+        localStorage.color_plan = cls
+        console.log(cls)
+        $('body').attr('class', cls)
+    })
+
+    // font family ══════════════════════════════
+    $('#setting #family b').click(function() {
+        family = $(this).css('font-family')
+        localStorage.font_family = family
+        console.log(family)
+        $('body').css('font-family', family)
+    })
+
+    // 初始化 ══════════════════════════════
+    console.log(localStorage.font_size, localStorage.font_weight, localStorage.font_family, localStorage.color_plan)
+    if (localStorage.font_size) {
+        $('body').css('font-size', localStorage.font_size + 'px')
+    }
+    if (localStorage.font_weight) {
+        $('body').css('font-weight', localStorage.font_weight)
+    }
+    if (localStorage.font_family) {
+        $('body').css('font-family', localStorage.font_family)
+    }
+    if (localStorage.color_plan) {
+        $('body').attr('class', localStorage.color_plan)
+    }
+    // change setting panel text
+    size = parseInt($('body').css('font-size'))
+    sizeChange(size)
+    weight = parseInt($('body').css('font-weight'))
+    weightChange(weight)
     </script>
 </body>
 
