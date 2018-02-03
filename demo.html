@@ -96,11 +96,11 @@
     }
 
     header h1:before {
-        background-image: url(http://www.8bei8.com/book/images/chapterLeft.png);
+        background-image: url(img/chapterLeft.png);
     }
 
     header h1:after {
-        background-image: url(http://www.8bei8.com/book/images/chapterRight.png);
+        background-image: url(img/chapterRight.png);
     }
 
     header h2 {
@@ -144,7 +144,7 @@
     #yuanwen {
         font-weight: bolder;
     }
-    /*════════════════════ tips*/
+    /*════════════════════ tips / 注释*/
 
     #yuanwen sup {
         padding: 0 2px;
@@ -162,7 +162,7 @@
     }
 
     #zhushi {
-        font-size: .8em;
+        font-size: .9em;
         /*list-style-type: decimal;*/
     }
 
@@ -287,7 +287,7 @@
     .paper,
     .paper a {
         color: #444;
-        background: #EED url(http://www.8bei8.com/IndexFiles/images/bg.png);
+        background: #EED url(img/bg.png);
     }
 
     .dark,
@@ -307,6 +307,17 @@
     #setting #close {
         color: #88D;
         font-size: .8em;
+    }
+    /*════════════════════ log*/
+
+    #debug {
+        background: yellow;
+        color: black;
+        position: fixed;
+        left: 0;
+        z-index: 9999;
+        font: 12px/1 monospace;
+        padding: 0 2px;
     }
     </style>
 </head>
@@ -328,6 +339,7 @@
         </div>
         <div id="close">關閉面板</div>
     </div>
+    <div id="debug"></div>
     <!-- 頂部nav。考慮到功能使用頻度，以及手機的可視範圍，所以不做固定。 -->
     <nav>
         <a href="http://www.8bei8.com/">太極書館</a>
@@ -404,6 +416,11 @@
         <div id="code2wm" style="background:url(http://pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=http://www.8bei8.com/book/daxue_2.html) center center no-repeat;" onclick="code2wm(0);"></div>
     </div>
     <script>
+    // console log ══════════════════════════════
+    log = function() {
+        console.log(arguments)
+        $('#debug').html(JSON.stringify(arguments))
+    }
     // setting panel ══════════════════════════════
     // open press '设置'
     $('#readSet').click(function() {
@@ -415,56 +432,57 @@
     })
 
     // font size ══════════════════════════════
-    sizeChange = function(size) {
+    sizeChange = function(change) {
+        var size = parseInt(localStorage.font_size)
+        var olds = size
+        if (change == '+') {
+            size = Math.min(size + 1, 32)
+        } else if (change == '-') {
+            size = Math.max(size - 1, 12)
+        }
+        log(olds, size, change)
         localStorage.font_size = size
-        console.log(size)
         $('body').css('font-size', size)
         $('#setting #size').text(size + 'px')
     }
 
     // font size - reduce
     $('#setting #small').click(function() {
-        size = $('body').css('font-size')
-        size = Math.max(parseInt(size) - 1, 12)
-        sizeChange(size)
+        sizeChange('-')
     })
     // font size - enlarge
     $('#setting #big').click(function() {
-        size = $('body').css('font-size')
-        size = Math.min(parseInt(size) + 1, 32)
-        sizeChange(size)
+        sizeChange('+')
     })
 
     // font weight ══════════════════════════════
-    weightChange = function(weight, change) {
-        weight = $('body').css('font-weight')
-        if (weight == 'normal') { weight = 400 }
-        if (weight == 'bold') { weight = 700 }
+    weightChange = function(change) {
+        var weight = parseInt(localStorage.font_weight)
         // alert(weight)
         if (change == '+') {
-            weight = Math.min(parseInt(weight) + 100, 900)
-        } else {
-            weight = Math.max(parseInt(weight) - 100, 100)
+            weight = Math.min(weight + 100, 900)
+        } else if (change == '-') {
+            weight = Math.max(weight - 100, 100)
         }
         localStorage.font_weight = weight
-        console.log(weight)
+        log(weight, change)
         $('body').css('font-weight', weight)
         $('#setting #weight').text(weight)
     }
     // font weight - lighter
     $('#setting #light').click(function() {
-        weightChange(weight, '-')
+        weightChange('-')
     })
     // font weight - bolder
     $('#setting #bold').click(function() {
-        weightChange(weight, '+')
+        weightChange('+')
     })
 
     // color style ══════════════════════════════
     $('#setting #color b').click(function() {
         cls = $(this).attr('class')
         localStorage.color_plan = cls
-        console.log(cls)
+        log(cls)
         $('body').attr('class', cls)
     })
 
@@ -472,29 +490,30 @@
     $('#setting #family b').click(function() {
         family = $(this).css('font-family')
         localStorage.font_family = family
-        console.log(family)
+        log(family)
         $('body').css('font-family', family)
     })
 
     // 初始化 ══════════════════════════════
-    console.log(localStorage.font_size, localStorage.font_weight, localStorage.font_family, localStorage.color_plan)
-    if (localStorage.font_size) {
-        $('body').css('font-size', localStorage.font_size + 'px')
+    log(localStorage.font_size, localStorage.font_weight, localStorage.font_family, localStorage.color_plan)
+
+    if (!localStorage.font_size) {
+        localStorage.font_size = 18 //默认值
     }
-    if (localStorage.font_weight) {
-        $('body').css('font-weight', localStorage.font_weight)
+    sizeChange('')
+
+    if (!localStorage.font_weight) {
+        localStorage.font_weight = 400 //默认值
     }
+    weightChange('')
+
     if (localStorage.font_family) {
         $('body').css('font-family', localStorage.font_family)
     }
+
     if (localStorage.color_plan) {
         $('body').attr('class', localStorage.color_plan)
     }
-    // change setting panel text
-    size = parseInt($('body').css('font-size'))
-    sizeChange(size)
-    weight = parseInt($('body').css('font-weight'))
-    weightChange(weight)
     </script>
 </body>
 
