@@ -62,7 +62,6 @@
     header {
         text-align: center;
         margin: 10px;
-        font-family: 'Hiragino Mincho ProN', 'LiSong Pro', Simsun, serif;
     }
 
     header * {
@@ -190,25 +189,111 @@
         padding: .2em .5em;
         border: 1px solid;
         border-radius: .25em;
-        margin:.25em;
+        margin: .25em;
         color: #B86;
         transition: .5s;
-        flex:0 0 auto;
+        flex: 0 0 auto;
     }
 
     footer a:hover {
         background: #D44;
-        color:white;
-    }
-    footer #placeholder{
-        flex:1 1 auto;
-        opacity: 0;
+        color: white;
     }
 
+    footer #placeholder {
+        flex: 1 1 auto;
+        opacity: 0;
+    }
+    /*════════════════════ read settings*/
+
+    #readSet {
+        cursor: pointer;
+    }
+
+    #setting {
+        width: 200px;
+        background: #FFF;
+        border-radius: 10px;
+        font: 18px/44px sans-serif;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+        position:absolute;
+        z-index: 99;
+        right:20px;
+        top:-500px;
+        transition: .5s;
+    }
+    #setting.on {
+        top:40px;
+    }
+
+    #setting div {
+        display: flex;
+        border-bottom: 1px solid #DDD;
+        justify-content: center;
+        cursor:pointer;
+    }
+
+    #setting div:last-child {
+        border: none;
+    }
+
+    #setting a {
+        flex: 1 1 50%;
+        height: 44px;
+        border-right: 1px solid #DDD;
+    }
+
+    #setting a:last-child,
+    #setting #bg a {
+        border: none;
+    }
+
+    #setting #small {
+        font-size: .8em;
+    }
+
+    #setting #big {
+        font-size: 1.2em;
+    }
+
+    #setting #light {
+        font-weight: lighter;
+    }
+
+    #setting #bold {
+        font-weight: bolder;
+    }
+
+    #setting #sans {
+        font-family: 'PingFang SC', 'PingFang TC', 'Microsoft Yahei', sans-serif;
+    }
+
+    #setting #serif {
+        font-family: 'Hiragino Mincho ProN', 'Simsun', serif;
+    }
+ #setting #close{
+    color:#888;
+    font-size: .8em;
+ }
     </style>
 </head>
 
 <body>
+    <!-- font setting panel -->
+    <div id="setting">
+        <div><a id="small">小</a><a id="big">大</a></div>
+        <div><a id="light">细</a><a id="bold">粗</a></div>
+        <div id="bg">
+            <a id="white">白</a>
+            <a id="paper">纸</a>
+            <a id="warm">暖</a>
+            <a id="dark">夜</a>
+        </div>
+        <div id="sans">黑体</div>
+        <div id="serif">宋体</div>
+        <div id="close">关闭面板</div>
+    </div>
     <!-- 顶部nav。考虑到功能使用频度，以及手机的可视范围，所以不做固定。 -->
     <nav>
         <a href="http://www.8bei8.com/">太极书馆</a>
@@ -217,7 +302,7 @@
             <a href="http://www.8bei8.com/book/daxue.html" id="pageTurn">目录</a>
             <a id="readSet" onclick="readSet();">设置</a>
             <a href="http://www.8bei8.com/app/message/index.html?bookUrl=http://www.8bei8.com/book/daxue_2.html&amp;bookName=《大学》第2页" target="_blank">纠错</a>
-            <a onclick="code2wm(1);" class="code2wm ie6hidden">二维码</a>
+            <a href="" onclick="">二维码</a>
         </div>
     </nav>
     <article>
@@ -285,154 +370,20 @@
         <div id="code2wm" style="background:url(http://pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=http://www.8bei8.com/book/daxue_2.html) center center no-repeat;" onclick="code2wm(0);"></div>
     </div>
     <script>
-    var urlCookie = getCookie('readSet');
-    if (urlCookie) { //免首次访问报空
-        getStyle(urlCookie);
-    } //if
-    //mobileSet.js中有ismobile全局变量
-    if (ismobile == 0) { //pc端
-
-        if (document.getElementsByClassName) { //支持这个函数
-            var topMenus = document.getElementsByClassName('menu');
-            if (topMenus[0]) { //getElementsByTagName不报null
-                var tags = topMenus[0].getElementsByTagName('a');
-                for (var i = 0; i < tags.length; i++) {
-                    var str = tags[i].innerHTML;
-                    if (str.length >= 15) {
-                        document.write("<style>.menu a{width:47%;}</style>");
-                        break;
-                    } //if
-                } //for
-            } //if//不报null
-        } //if
-        else { //不支持这个函数
-            var tags = document.getElementsByTagName('div');
-            for (var i = 0; i < tags.length; i++) {
-                if (tags[i].className == 'menu') {
-                    var theA = tags[i].getElementsByTagName('a');
-                    for (var j = 0; j < theA.length; j++) {
-                        if (theA[j].innerHTML.length >= 15) {
-                            document.write("<style>.menu a{width:47%;}</style>");
-                            break;
-                        } //if
-                    } //for
-                } //if
-
-            } //for
-        } //else
-
-    } //if //pc端
-
-
-
-    function navFollow(num) {
-        var headerWrap = document.getElementById("navOuter");
-        var pbody = document.getElementById("body");
-        var navTop = document.getElementById("navTop");
-        var scrollTop = 0;
-        window.onscroll = function(e) {
-            var e = e || window.event;
-            scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-            if (scrollTop >= 200) {
-                headerWrap.className = "fixed";
-                pbody.style.paddingTop = 130 + "px"; //200-70=130
-                navTop.innerHTML = "<a href='#' class='backTop'>顶部</div>";
-                navTop.style.width = "50px";
-                if (num == 1) { //进行位移cookie
-                    nCookie = scollPostion().top;
-                    setCookie("readPosition", nCookie);
-                } //if
-            } //if
-            if (scrollTop < 80) {
-                headerWrap.className = "navOuter";
-                pbody.style.paddingTop = 0 + "px";
-                navTop.innerHTML = "";
-                navTop.style.width = "0px";
-            } //if
-        }
-    } //function
-
-
-    function scollPostion() {
-        var t = 0,
-            l = 0,
-            w = 0,
-            h = 0;
-        if (document.documentElement && document.documentElement.scrollTop) {
-            t = document.documentElement.scrollTop;
-            l = document.documentElement.scrollLeft;
-            w = document.documentElement.scrollWidth;
-            h = document.documentElement.scrollHeight;
-        } else if (document.body) {
-            t = document.body.scrollTop;
-            l = document.body.scrollLeft;
-            w = document.body.scrollWidth;
-            h = document.body.scrollHeight;
-        }
-        return { top: t, left: l, width: w, height: h };
-    } //function Scoll
-
-
-    function setCookie(sName, sValue) {
-        var Days = 365;
-        var exp = new Date();
-        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-        document.cookie = sName + "=" + escape(sValue) + "; expires=" + exp.toGMTString() + ";path=/";
-    }
-
-    function getCookie(sName) {
-        if (document.cookie) {
-            var aCookie = document.cookie.split("; ");
-            for (var i = 0; i < aCookie.length; i++) {
-                var aCrumb = aCookie[i].split("=");
-                if (sName == aCrumb[0]) {
-                    return unescape(aCrumb[1]);
-                }
-            }
-        } //if
-        return null;
-    }
-
-    function getStyle(style) {
-        var theStyle = style.split("|");
-        for (var i = 0; i < theStyle.length; i++) {
-            if (theStyle[i] == "night") {
-                document.write("<style>.fixed{background:#000;}.fixed a{color:#00A6AC;}.fixed a:hover{text-decoration:underline;color:#ff0000;}</style>");
-                break;
-            } //if
-            if (theStyle[i] == "paper") {
-                document.write("<style>.fixed{background:#F4F0D9;}.fixed a{color:#361609;}.menu .fixed a:hover{text-decoration:underline;color:#ff0000;}</style>");
-                break;
-            } //if
-        } //for
-    }
-
-    function gotoPostion(num) {
-        document.documentElement.scrollTop = num;
-        document.body.scrollTop = num;
-    } //function Scoll
-    </script>
-    <script>
-    var position = getCookie('readPosition');
-    if (position) { gotoPostion(position); } navFollow(1);
-    </script>
-    <script src="http://www.8bei8.com/app/dic/bookLoad.js?20171125">
-    </script>
-    <script>
-    var f = 'js';
-    var z = 'safe';
-    var k = 'http://' + window.location.host;
-    var myDate = new Date();
-    var theNum = myDate.getMilliseconds();
-    </script>
-    <script>
-    document.write("<script src='" + k + "/" + z + "/" + z + "." + f + "?" + theNum + "'><\/script>");
-    </script>
-    <script src="http://www.8bei8.com/safe/safe.js?549"></script>
-    <script src="http://www.8bei8.com/app/onlineUser/putOnlineUser.js?20171125"></script>
-    <script src="http://www.8bei8.com/app/onlineUser/ajax.min.js"></script>
-    <script>
-    putOnlineUserInfo("《大学》第2页", "http://www.8bei8.com/book/daxue_2.html");
+        // open setting paenl
+        $('#readSet').click(function(){
+            $('#setting').toggleClass('on')
+        })
+        // close setting paenl
+        $('#setting #close').click(function(){
+            $('#setting').removeClass('on')
+        })
+        // reduce font size
+        $('#setting #small').click(function(){
+            size = $('body').css('font-size')
+            console.log(size)
+            $('#setting').removeClass('on')
+        })
     </script>
 </body>
 
