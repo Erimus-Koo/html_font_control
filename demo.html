@@ -167,7 +167,7 @@
         /*list-style-type: decimal;*/
     }
 
-    #zhushi p{
+    #zhushi p {
         margin: .5em 0;
     }
 
@@ -177,6 +177,34 @@
         border-bottom: 1px solid;
         font-weight: bold;
     }
+    /*════════════════════ footer*/
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 3em;
+    }
+
+    footer a {
+        font-size: .8em;
+        padding: .2em .5em;
+        border: 1px solid;
+        border-radius: .25em;
+        margin:.25em;
+        color: #B86;
+        transition: .5s;
+        flex:0 0 auto;
+    }
+
+    footer a:hover {
+        background: #D44;
+        color:white;
+    }
+    footer #placeholder{
+        flex:1 1 auto;
+        opacity: 0;
+    }
+
     </style>
 </head>
 
@@ -246,19 +274,16 @@
         </section>
     </article>
     <footer>
-        <script>
-        var prev = 'book/daxue_1.html';
-        var next = 'book/daxue_3.html';
-        </script>
-        <div class="left"><a href="#" class="backTop">顶部</a><a href="http://www.8bei8.com/book/daxue.html">目录</a></div>
-        <a href="http://www.8bei8.com/book/daxue_1.html" title=" 键盘左键 <- " class="prevPage">上页</a>
-        <a href="http://www.8bei8.com/book/daxue_3.html" title=" 键盘右键 -> " class="nextPage">下一页</a>
+        <a href="#" class="backTop">顶部</a>
+        <a href="">目录</a>
+        <a href="" title=" 键盘左键 <- " id="prevPage">上一页</a>
+        <a id="placeholder">占位</a>
+        <a href="" title=" 键盘右键 -> " id="nextPage">下一页</a>
     </footer>
-
+    <!-- qrcode -->
     <div id="code2wmMask">
         <div id="code2wm" style="background:url(http://pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=http://www.8bei8.com/book/daxue_2.html) center center no-repeat;" onclick="code2wm(0);"></div>
     </div>
-
     <script>
     var urlCookie = getCookie('readSet');
     if (urlCookie) { //免首次访问报空
