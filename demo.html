@@ -142,7 +142,7 @@
     }
 
     #yuanwen {
-        font-weight: bold;
+        font-weight: bolder;
     }
     /*════════════════════ tips*/
 
@@ -174,7 +174,7 @@
         display: inline-block;
         line-height: 1.1em;
         border-bottom: 1px solid;
-        font-weight: bold;
+        font-weight: bolder;
     }
     /*════════════════════ footer*/
 
@@ -265,11 +265,11 @@
     }
 
     #setting #light {
-        font-weight: lighter;
+        font-weight: 100;
     }
 
     #setting #bold {
-        font-weight: bolder;
+        font-weight: 900;
     }
 
     .white,
@@ -436,7 +436,16 @@
     })
 
     // font weight ══════════════════════════════
-    weightChange = function(weight) {
+    weightChange = function(weight, change) {
+        weight = $('body').css('font-weight')
+        if (weight == 'normal') { weight = 400 }
+        if (weight == 'bold') { weight = 700 }
+        // alert(weight)
+        if (change == '+') {
+            weight = Math.min(parseInt(weight) + 100, 900)
+        } else {
+            weight = Math.max(parseInt(weight) - 100, 100)
+        }
         localStorage.font_weight = weight
         console.log(weight)
         $('body').css('font-weight', weight)
@@ -444,15 +453,11 @@
     }
     // font weight - lighter
     $('#setting #light').click(function() {
-        weight = $('body').css('font-weight')
-        weight = Math.max(parseInt(weight) - 100, 100)
-        weightChange(weight)
+        weightChange(weight, '-')
     })
     // font weight - bolder
     $('#setting #bold').click(function() {
-        weight = $('body').css('font-weight')
-        weight = Math.min(parseInt(weight) + 100, 900)
-        weightChange(weight)
+        weightChange(weight, '+')
     })
 
     // color style ══════════════════════════════
