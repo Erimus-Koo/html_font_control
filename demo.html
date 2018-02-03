@@ -37,6 +37,8 @@
 
     * {
         box-sizing: border-box;
+        /*横屏不放大*/
+        -webkit-text-size-adjust: 100%;
     }
 
     a {
@@ -241,7 +243,8 @@
     #setting b {
         flex: 1 1 50%;
         height: 44px;
-        border-right: 1px solid #DDD;
+        /*border-right: 1px solid #DDD;*/
+        font-weight: normal;
     }
 
     #setting #size,
@@ -277,7 +280,7 @@
 
     .warm,
     .warm a {
-        color: #444;
+        color: #543;
         background: #FFE;
     }
 
@@ -315,8 +318,8 @@
         <div><b id="light">細</b><b id="weight">400</b><b id="bold">粗</b></div>
         <div id="color">
             <b class="white">白</b>
-            <b class="warm">暖</b>
             <b class="paper">紙</b>
+            <b class="warm">暖</b>
             <b class="dark">夜</b>
         </div>
         <div id="family">
