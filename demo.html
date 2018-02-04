@@ -584,32 +584,38 @@
     // 格式化注释。
     $("#zhushi b").each(function() {
         var index = $(this).attr('id').replace('wt_', '')
-        var alt = $('#wr_' + index).parent('span').html()
+        var title = $('#wr_' + index).parent('span').text()
+        $(this).attr('title', title)
+        var info = $('#wr_' + index).parent('span').html()
         var id = 'wr_' + index + '"'
-        alt = alt.replace(id, id + ' style="color:#D44"')
-        $(this).attr('title', alt)
+        info = info.replace(id, id + ' style="color:#D44"')
+        $(this).attr('info', info)
         // $(this).before(index + '. ')
         $(this).after('：')
     })
     // 格式化原文中有注释的词。
     $("#yuanwen u").each(function() {
         var index = $(this).attr('id').replace('wr_', '')
-        var alt = $('#wt_' + index).parent('p').html()
-        $(this).attr('title', alt)
+        var title = $('#wt_' + index).parent('p').text()
+        $(this).attr('title', title)
+        var info = $('#wt_' + index).parent('p').html()
+        $(this).attr('info', info)
         // $(this).after('<sup>' + index + '</sup>')
     })
     // 整句翻译 ══════════════════════════════
     // 原文：鼠标悬停显示译文。
     $("#yuanwen span").each(function() {
         var index = $(this).attr('id').replace('sr_', '')
-        var alt = $('#st_' + index).text()
-        $(this).attr('title', alt)
+        var title = $('#st_' + index).text()
+        $(this).attr('title', title)
+        $(this).attr('info', title)
     })
     // 译文：鼠标悬停显示原文。
     $("#yiwen span").each(function() {
         var index = $(this).attr('id').replace('st_', '')
-        var alt = $('#sr_' + index).text()
-        $(this).attr('title', alt)
+        var title = $('#sr_' + index).text()
+        $(this).attr('title', title)
+        $(this).attr('info', title)
     })
 
     // 关联信息气泡 ══════════════════════════════
@@ -617,13 +623,13 @@
         e.stopPropagation()
         status = $(this).attr('class')
         $('section *').removeClass('selected')
-        alt = $(this).attr('title')
+        info = $(this).attr('info')
         // 点击物已经展开 || 点击物没有title
-        if (status == 'selected' || !alt) {
+        if (status == 'selected' || !info) {
             $('#debug').css('top', '-50%')
         } else {
             $(this).addClass('selected')
-            $('#debug').html(alt)
+            $('#debug').html(info)
             $('#debug').css('top', 0)
         }
     })
