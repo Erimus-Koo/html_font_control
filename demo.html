@@ -37,7 +37,6 @@
 
     * {
         box-sizing: border-box;
-        /*横屏不放大*/
         -webkit-text-size-adjust: 100%;
     }
 
@@ -150,15 +149,15 @@
     }
     /*════════════════════ tips / 注释*/
 
-    #yuanwen span,#yiwen span {
+    #yuanwen span,
+    #yiwen span {
         border-radius: .25em;
     }
 
-    section span.selected {
-        background: rgba(255, 255, 0, .25);
-    }
-    section a.selected{
-        color:#B44;
+    .selected,
+    .selected * {
+        color: #D44!important;
+        font-weight: bolder;
     }
 
     #yuanwen sup {
@@ -195,8 +194,8 @@
 
     #yuanwen span:before,
     #yiwen span:before {
-        content: '❚ ';
-        color: #B44;
+        /*content: '❚ ';*/
+        color: #D44;
     }
     /*════════════════════ footer*/
 
@@ -294,7 +293,8 @@
         font-weight: 900;
     }
 
-    .white {
+    .white,
+    .white #debug {
         color: #000;
         background: #FFF;
     }
@@ -303,7 +303,8 @@
         color: #000;
     }
 
-    .warm {
+    .warm,
+    .warm #debug {
         color: #543;
         background: #FFE;
     }
@@ -312,7 +313,8 @@
         color: #543;
     }
 
-    .paper {
+    .paper,
+    .paper #debug {
         color: #444;
         background: #EED url(img/bg.png);
     }
@@ -321,7 +323,8 @@
         color: #444;
     }
 
-    .dark {
+    .dark,
+    .dark #debug {
         color: #DDD;
         background: #222;
     }
@@ -345,13 +348,25 @@
     /*════════════════════ log*/
 
     #debug {
-        background: yellow;
-        color: black;
+        color: #D44!important;
         position: fixed;
         left: 0;
+        top: 0;
         z-index: 9999;
-        font: 12px/1 monospace;
-        padding: 0 2px;
+        opacity: .95;
+        font-weight: bolder;
+        text-align: justify;
+        max-height: 40%;
+        transition: .25s;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        padding: 20px;
+        width: 100%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    }
+
+    #debug:empty {
+        display: none;
     }
     </style>
 </head>
@@ -467,13 +482,6 @@
         <div id="code2wm" style="background:url(http://pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=http://www.8bei8.com/book/daxue_2.html) center center no-repeat;" onclick="code2wm(0);"></div>
     </div>
     <script>
-    // console log ══════════════════════════════
-    log = function() {
-        console.log(arguments)
-        $('#debug').html(JSON.stringify(arguments))
-        $('#debug').show()
-    }
-    $('#debug').click(function() { $(this).hide() })
     // setting panel ══════════════════════════════
     // open press '设置'
     $('#readSet').click(function() {
@@ -493,7 +501,6 @@
         } else if (change == '-') {
             size = Math.max(size - 1, 12)
         }
-        log(olds, size, change)
         localStorage.font_size = size
         $('body').css('font-size', size)
         $('#setting #size').text(size + 'px')
@@ -518,7 +525,6 @@
             weight = Math.max(weight - 100, 100)
         }
         localStorage.font_weight = weight
-        log(weight, change)
         $('body').css('font-weight', weight)
         $('#setting #weight').text(weight)
     }
@@ -535,7 +541,6 @@
     $('#setting #color b').click(function() {
         cls = $(this).attr('class')
         localStorage.color_plan = cls
-        log(cls)
         $('body').attr('class', cls)
     })
 
@@ -543,15 +548,12 @@
     $('#setting #family b').click(function() {
         family = $(this).css('font-family')
         localStorage.font_family = family
-        log(family)
         $('body').css('font-family', family)
     })
 
 
     // 初始化 ══════════════════════════════
     // setting ══════════
-    log(localStorage.font_size, localStorage.font_weight, localStorage.font_family, localStorage.color_plan)
-
     if (!localStorage.font_size) {
         localStorage.font_size = 18 //默认值
     }
@@ -573,51 +575,57 @@
     // 格式化注释。
     $("#zhushi a").each(function() {
         index = $(this).attr('id').replace('wt_', '')
-        log(index)
         $(this).attr('href', '#wr_' + index)
-        $(this).before(index + '. ')
+        // $(this).before(index + '. ')
         $(this).after('：')
     })
     // 格式化原文中有注释的词。
     $("#yuanwen a").each(function() {
         index = $(this).attr('id').replace('wr_', '')
-        log(index)
         alt = $('#wt_' + index).parent('p').text()
-        log('<P>'+alt)
         $(this).attr('title', alt)
-        $(this).after('<sup>' + index + '</sup>')
-    })
-    $("#yuanwen a").mouseover(function(e){
-        e.stopPropagation(); //阻止向父级传递
-        $(this).addClass('selected')
+        // $(this).after('<sup>' + index + '</sup>')
     })
     // 整句翻译 ══════════════════════════════
     // 原文：鼠标悬停显示译文。
     $("#yuanwen span").each(function() {
         index = $(this).attr('id').replace('sr_', '')
-        log(index)
         alt = $('#st_' + index).text()
         $(this).attr('title', alt)
-    })
-    $("#yuanwen span").mouseover(function(){
-        $(this).addClass('selected')
     })
     // 译文：鼠标悬停显示原文。
     $("#yiwen span").each(function() {
         index = $(this).attr('id').replace('st_', '')
-        log(index)
         alt = $('#sr_' + index).text()
         $(this).attr('title', alt)
     })
-    $("#yiwen span").mouseover(function(){
-        $(this).addClass('selected')
+
+    // console log ══════════════════════════════
+    log = function() {
+        console.log(arguments)
+        $('#debug').html(JSON.stringify(arguments))
+        $('#debug').css('top', 0)
+    }
+    // 关联信息气泡 ══════════════════════════════
+    $('section *').click(function(e) {
+        e.stopPropagation()
+        status = $(this).attr('class')
+        $('section *').removeClass('selected')
+        alt = $(this).attr('title')
+        // 点击物已经展开 || 点击物没有title
+        if (status == 'selected' || !alt) {
+            $('#debug').css('top', '-50%')
+        } else {
+            $(this).addClass('selected')
+            $('#debug').html(alt)
+            $('#debug').css('top', 0)
+        }
     })
-    // 取消高亮
-    $('span').mouseout(function(){
-        $(this).removeClass('selected')
-    })
-    $('a').mouseout(function(){
-        $(this).removeClass('selected')
+    // 点击提示框 / 关闭
+    $('#debug').click(function() {
+        $(this).css('top', '-50%')
+        // $(this).html('')
+        $('section *').removeClass('selected')
     })
     </script>
 </body>
