@@ -154,8 +154,11 @@
         border-radius: .25em;
     }
 
-    span.selected {
+    section span.selected {
         background: rgba(255, 255, 0, .25);
+    }
+    section a.selected{
+        color:#B44;
     }
 
     #yuanwen sup {
@@ -583,7 +586,10 @@
         log('<P>'+alt)
         $(this).attr('title', alt)
         $(this).after('<sup>' + index + '</sup>')
-
+    })
+    $("#yuanwen a").mouseover(function(e){
+        e.stopPropagation(); //阻止向父级传递
+        $(this).addClass('selected')
     })
     // 整句翻译 ══════════════════════════════
     // 原文：鼠标悬停显示译文。
@@ -608,6 +614,9 @@
     })
     // 取消高亮
     $('span').mouseout(function(){
+        $(this).removeClass('selected')
+    })
+    $('a').mouseout(function(){
         $(this).removeClass('selected')
     })
     </script>
