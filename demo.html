@@ -420,7 +420,9 @@
     log = function() {
         console.log(arguments)
         $('#debug').html(JSON.stringify(arguments))
+        $('#debug').show()
     }
+    $('#debug').click(function() { $(this).hide() })
     // setting panel ══════════════════════════════
     // open press '设置'
     $('#readSet').click(function() {
