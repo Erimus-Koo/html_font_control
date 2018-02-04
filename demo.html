@@ -154,15 +154,15 @@
         padding: 0 2px;
         font-size: .6em;
         font-family: sans-serif;
-        font-weight: normal;
+        font-weight: lighter;
     }
 
     #yuanwen sup:before {
-        content: '[';
+        /*content: '[';*/
     }
 
     #yuanwen sup:after {
-        content: ']';
+        /*content: ']';*/
     }
 
     #zhushi {
@@ -374,7 +374,7 @@
         -->
         <section id="yuanwen">
             <div class="tips">原文</div>
-            <p>大學之道<sup id="ref_1"><a href="#cite_1">1</a></sup>，在明明德<sup id="ref_2"><a href="#cite_2">2</a></sup>，在親民<sup id="ref_3"><a href="#cite_3">3</a></sup>，在止於至善。知止<sup id="ref_4"><a href="#cite_4">4</a></sup>而後有定；定而後能靜；靜而後能安；安而後能慮；慮而後能得<sup id="ref_5"><a href="#cite_5">5</a></sup>。物有本末，事有終始。知所先後，則近道矣。古之欲明明德於天下者，先治其國；欲治其國者，先齊其家<sup id="ref_6"><a href="#cite_6">6</a></sup>；欲齊其家者，先修其身<sup id="ref_7"><a href="#cite_7">7</a></sup>；欲修其身者，先正其心；欲正其心者，先誠其意；欲誠其意者，先致其知<sup id="ref_8"><a href="#cite_8">8</a></sup>；致知在格物<sup id="ref_9"><a href="#cite_9">9</a></sup>。物格而後知至；知至而後意誠；意誠而後心正；心正而後身修；身修而後家齊；家齊而後國治；國治而後天下平。自天子以至於庶人<sup id="ref_10"><a href="#cite_10">10</a></sup>，壹是皆以修身為本<sup id="ref_11"><a href="#cite_11">11</a></sup>。其本亂而未治者否矣<sup id="ref_12"><a href="#cite_12">12</a></sup>。其所厚者薄，而其所薄者厚<sup id="ref_13"><a href="#cite_13">13</a></sup>，未之有也<sup id="ref_14"><a href="#cite_14">14</a></sup>！</p>
+            <p><a id="ref_1">大學之道</a>，在<a id="ref_2">明明德</a>，在<a id="ref_3">親民</a>，在止於至善。<a id="ref_4">知止</a>而後有定；定而後能靜；靜而後能安；安而後能慮；慮而後能<a id="ref_5">得</a>。物有本末，事有終始。知所先後，則近道矣。古之欲明明德於天下者，先治其國；欲治其國者，先<a id="ref_6">齊其家</a>；欲齊其家者，先<a id="ref_7">修其身</a>；欲修其身者，先正其心；欲正其心者，先誠其意；欲誠其意者，先<a id="ref_8">致其知</a>；致知在<a id="ref_9">格物</a>。物格而後知至；知至而後意誠；意誠而後心正；心正而後身修；身修而後家齊；家齊而後國治；國治而後天下平。自天子以至於<a id="ref_10">庶人</a>，<a id="ref_11">壹是皆以修身為本</a>。其本亂而<a id="ref_12">未</a>治者否矣。其所<a id="ref_13">厚者薄</a>，而其所薄者厚，<a id="ref_14">未之有也</a>！</p>
         </section>
         <section id="zhushi">
             <div class="tips">註釋</div>
@@ -438,7 +438,7 @@
         $('#setting').removeClass('on')
     })
 
-    // font size ══════════════════════════════
+    // font size ══════════
     sizeChange = function(change) {
         var size = parseInt(localStorage.font_size)
         var olds = size
@@ -462,7 +462,7 @@
         sizeChange('+')
     })
 
-    // font weight ══════════════════════════════
+    // font weight ══════════
     weightChange = function(change) {
         var weight = parseInt(localStorage.font_weight)
         // alert(weight)
@@ -485,7 +485,7 @@
         weightChange('+')
     })
 
-    // color style ══════════════════════════════
+    // color style ══════════
     $('#setting #color b').click(function() {
         cls = $(this).attr('class')
         localStorage.color_plan = cls
@@ -493,7 +493,7 @@
         $('body').attr('class', cls)
     })
 
-    // font family ══════════════════════════════
+    // font family ══════════
     $('#setting #family b').click(function() {
         family = $(this).css('font-family')
         localStorage.font_family = family
@@ -501,7 +501,9 @@
         $('body').css('font-family', family)
     })
 
+
     // 初始化 ══════════════════════════════
+    // setting ══════════
     log(localStorage.font_size, localStorage.font_weight, localStorage.font_family, localStorage.color_plan)
 
     if (!localStorage.font_size) {
@@ -521,6 +523,13 @@
     if (localStorage.color_plan) {
         $('body').attr('class', localStorage.color_plan)
     }
+    // add sup to ref ══════════════════════════════
+    // 根据需要注释的词(被指定的a)的id，自动添加序号，使源代码简洁。
+    $("#yuanwen a").each(function() {
+        index = $(this).attr('id').replace('ref_', '')
+        log(index)
+        $(this).after('<sup>' + index + '</sup>')
+    })
     </script>
 </body>
 
