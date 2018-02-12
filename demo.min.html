@@ -2,15 +2,16 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>大學 - 第二章 - 全文在線閱讀 - 太極書館</title>
+<title>大學 - 經文</title>
 <meta http-equiv="X-UA-Compatible" content="chrome=1;IE=13;IE=12;IE=11;IE=10;IE=9;IE=8;">
 <meta name="description" content="《大學》全文在線閱讀">
 <meta name="keywords" content="大學,大學白話,大學翻譯,大學註解,library, reading, learning, reading, online, free, culture, Chinese culture, classical Chinese, classical">
 <meta name="format-detection" content="telephone=no,email=no,adress=no">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimum-scale=1,maximum-scale=1">
-<link rel="shortcut icon" href="http://erimus.cc/favicon.ico">
-<script src="http://erimus.cc/plugins/jquery/jquery.min.js"></script>
-<style>body,html{margin:0 auto;padding:0 10px;max-width:800px;position:relative;font-size:18px;line-height:1.8;font-family:sans-serif;font-weight:400;-webkit-tap-highlight-color:transparent}*{box-sizing:border-box;-webkit-text-size-adjust:100%}a{text-decoration:none}nav{height:44px;line-height:44px;position:relative;font-size:.8em}nav #right{float:right}header{text-align:center;margin:10px}header *{margin:0}header h1{font-size:2em;display:flex;justify-content:center;align-items:center}header h1 div{display:inline-flex;flex:0 0 auto;max-width:80%}header h1:after,header h1:before{content:'';display:inline-flex;flex:0 2 auto;width:225px;height:35px;margin:0 10px;background-size:contain;background-repeat:no-repeat;background-position:0 50%}header h1:before{background-image:url(img/chapterLeft.png)}header h1:after{background-image:url(img/chapterRight.png)}header h2{font-size:1em}article{text-align:justify}section{margin:3em 0;position:relative}section .tips{position:absolute;top:-1.5em;font-size:.8rem;line-height:1.25em;font-weight:400;border-radius:99px;border:1px solid;padding:0 .5em;font-family:sans-serif}#yuanwen .tips{color:#b84}#zhushi .tips{color:#696}#yiwen .tips{color:#d62}#tijie .tips{color:#68b}#yuanwen{font-weight:bolder}#yiwen,#zhushi{display:none}#yiwen span,#yuanwen span{border-radius:.25em}.selected,.selected *{color:#d44!important;font-weight:bolder}#zhushi{font-size:.9em}#zhushi p{margin:.5em 0}#yuanwen u{text-decoration:none;display:inline-block;line-height:1.1em;border-bottom:1px solid}#yiwen span:before,#yuanwen span:before{content:'';background:#d44;display:inline-block;width:.2em;height:.8em;margin:0 .2em 0 0}footer{display:flex;justify-content:space-between;margin-bottom:3em}footer a{font-family:sans-serif;font-size:.8em;padding:.2em .5em;border:1px solid;border-radius:.25em;margin:.25em;color:#b86!important;transition:.5s;flex:0 0 auto}footer a:hover{color:#f44!important}footer #placeholder{flex:1 1 auto;opacity:0}#readSet{cursor:pointer}#setting{width:200px;background:#fff;border-radius:10px;font:18px/44px sans-serif;color:#444;text-align:center;box-shadow:0 0 10px rgba(0,0,0,.2);position:fixed;z-index:99;right:20px;top:-500px;transition:.5s}#setting.on{top:40px}#setting div{display:flex;border-bottom:1px solid #ddd;justify-content:center;cursor:pointer}#setting div:last-child{border:none}#setting b{flex:1 1 50%;height:44px;font-weight:400}#setting #size,#setting #weight{flex:1 1 100%}#setting b:last-child{border:none}#setting #small{font-size:.8em}#setting #big{font-size:1.2em}#setting #light{font-weight:100}#setting #bold{font-weight:900}.white,.white #debug{color:#000;background:#fff}.white a{color:#000}.warm,.warm #debug{color:#543;background:#ffe}.warm a{color:#543}.paper,.paper #debug{color:#444;background:#eed url(img/bg.png)}.paper a{color:#444}.dark,.dark #debug{color:#ddd;background:#222}.dark a{color:#ddd}#setting #sans{font-family:'PingFang SC','PingFang TC','Microsoft Yahei',sans-serif}#setting #serif{font-family:'Hiragino Mincho ProN',Simsun,serif}#setting #close{color:#88d;font-size:.8em}#debug{position:fixed;left:0;top:0;z-index:9999;opacity:.95;font-weight:bolder;text-align:justify;max-height:40%;transition:.25s;overflow-y:scroll;-webkit-overflow-scrolling:touch;padding:20px;width:100%;box-shadow:0 0 10px rgba(0,0,0,.5)}#debug:empty{display:none}</style>
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="main.min.js" defer></script>
+<link rel="stylesheet" href="main.css">
 </head>
 <body class="warm">
 <div id="setting">
@@ -23,33 +24,30 @@
 <b class="dark">夜</b>
 </div>
 <div id="family">
-<b id="sans">黑體</b>
-<b id="serif">宋體</b>
+<b class="sans">黑體</b>
+<b class="serif">宋體</b>
 </div>
 <div id="close">關閉面板</div>
 </div>
-<div id="debug"></div>
+<div id="debug">
+<div>
+<div id="info"></div>
+</div>
+</div>
 <nav>
-<a href="http://www.8bei8.com/">太極書館</a>
-<a href="http://www.8bei8.com/book">古籍</a>
 <div id="right">
-<a href="http://www.8bei8.com/book/daxue.html" id="pageTurn">目錄</a>
-<a id="readSet" style="color:red">設置</a>
-<a href="http://www.8bei8.com/app/message/index.html?bookUrl=http://www.8bei8.com/book/daxue_2.html&amp;bookName=《大學》第2頁" target="_blank">糾錯</a>
-<a href="">二維碼</a>
 </div>
 </nav>
 <article>
 <header>
 <h1><div>大學</div></h1>
-<h2>第二章</h2>
+<h2>經文</h2>
 </header>
-<h3>三綱八目的追求</h3>
 <section id="yuanwen">
 <div class="tips">原文</div>
 <p>
 <span id="sr_1"><u id="wr_1">大學之道</u>，在<u id="wr_2">明明德</u>，在<u id="wr_3">親民</u>，在止於至善。</span>
-<span id="sr_2"><u id="wr_4">知止</u>而後有定；定而後能靜；靜而後能安；安而後能慮；慮而後能<u id="wr_5">得</u>。物有本末，事有終始。知所先後，則近道矣。</span>
+<span id="sr_2"><u id="wr_4">知止</u>而後有定；定而後能靜；靜而後能安；安而後能慮；慮而後能<u id="wr_5">得</u>。物有本末，事有終始，知所先後，則近道矣。</span>
 <span id="sr_3">古之欲明明德於天下者，先治其國；欲治其國者，先<u id="wr_6">齊其家</u>；欲齊其家者，先<u id="wr_7">修其身</u>；欲修其身者，先正其心；欲正其心者，先誠其意；欲誠其意者，先<u id="wr_8">致其知</u>；致知在<u id="wr_9">格物</u>。</span>
 <span id="sr_4">物格而後知至；知至而後意誠；意誠而後心正；心正而後身修；身修而後家齊；家齊而後國治；國治而後天下平。</span>
 <span id="sr_5">自天子以至於<u id="wr_10">庶人</u>，<u id="wr_11">壹是</u>皆以修身為<u id="wr_12">本</u>。其本亂而<u id="wr_13">未</u>治者否矣。其所<u id="wr_14">厚者薄</u>，而其所<u id="wr_15">薄者厚</u>，<u id="wr_16">未之有也</u>！</span>
@@ -57,9 +55,12 @@
 </section>
 <section id="zhushi">
 <div class="tips">註釋</div>
-<p><b id="wt_1">大學之道</b>大學的宗旨。“大學”一詞在古代有兩種含義：一是“博學”的意思；二是相對於小學而言的“大人之學”。古人八歲人小學，學習“灑掃應對進退、禮樂射禦書數”等文化基礎知識和禮節；十五歲人大學，學習倫理、政治、哲學等“窮理正心，修己治人”的學問。所以，後一種含義其實也和前一種含義有相通的地方，同樣有“博學”的意思。”道“的本義是道路，引申為規律、原則等，在中國古代哲學、政治學裏，也指宇宙萬物的本原、個體，一定的政治觀或思想體系等，在不同的上下文環境裏有不同的意思。</p>
-<p><b id="wt_2">明明德</b>前一個“明”作動詞，有使動的意味，即“使彰明”，也就是發揚、弘揚的意思。後一個“明”作形容詞，明德也就是光明正大的品德。</p>
-<p><b id="wt_3">親民</b>根據後面的“傳”文，“親”應為“新”，即革新、棄舊圖新。親民，也就是新民，使人棄舊圖新、去惡從善。</p>
+<p><b id="wt_1">大學之道</b>大學的宗旨。
+<br>「大學」在古代有兩種含義：一是「博學」的意思；二是相對於小學而言的「大人之學」。
+<br>古人八歲人小學，學習「灑掃應對進退、禮樂射禦書數」等文化基礎知識和禮節；十五歲人大學，學習倫理、政治、哲學等「窮理正心，修己治人」的學問。
+<br>所以，後一種含義其實也和前一種含義有相通的地方，同樣有「博學」的意思。</p>
+<p><b id="wt_2">明明德</b>前一個「明」作動詞，即「使彰明」，也就是發揚、弘揚的意思。後一個「明」作形容詞，明德也就是光明正大的品德。</p>
+<p><b id="wt_3">親民</b>根據後面的「傳」文，「親」應為「新」，即革新、棄舊圖新。親民，也就是新民，使人棄舊圖新、去惡從善。</p>
 <p><b id="wt_4">知止</b>知道目標所在。</p>
 <p><b id="wt_5">得</b>收獲。</p>
 <p><b id="wt_6">齊其家</b>管理好自己的家庭或家族，使家庭或家族和和美美，蒸蒸日上，興旺發達。</p>
@@ -87,25 +88,28 @@
 </section>
 <section id="tijie">
 <div class="tips">題解</div>
-<p>這裏所展示的，是儒學三綱八目的追求。
-<br>所謂三綱，是指明德、新民、止於至善。它既是《大學》的綱領旨趣，也是儒學“垂世立教”的目標所在。
-<br>所謂八目，是指格物、致知、誠意、正心、修身、齊家、治國、平天下。它既是為達到“三綱”而設計的條目工夫，也是儒學為我們所展示的人生進修階梯。
-<br>縱覽四書五經，我們發現，儒家的全部學說實際上都是循著這三綱八目而展開的。所以，抓住這三綱八目你就等於抓住了一把打開儒學大門的鑰匙。循著這進修階梯一步一個腳印，你就會登堂入室，領略懦學經典的奧義。就這裏的階梯本身而言，實際上包括“內修”和“外治”兩大方面：前面四級“格物、致知，誠意、正心”是“內修”；後面三綱“齊家、治國、平天下”是“外治”。而其中間的“修身”一環，則是連結“年修”和“外治”兩方面的樞紐，它與前面的“內修”項目連在一起，是“獨善其身”；它與後面的“外治”項目連在一起，是“兼善天下”。
-<br>兩千多年來，一代又一代中國知識分子“窮則獨善其身，達則兼善天下”(《孟子·盡心下》)，把生命的歷程鋪設在這一階梯之上。所以，它實質上已不僅僅是一系列學說怯質的進修步驟，而是具有濃厚實踐色彩的人生追求階梯了。它鑄造了一代又一代中國知識分子的人格心理，時至今日，仍然在我們身上發揮著潛移默化的作用。不管你是否意識明確，不管你積極還是消極，“格、致、誠、正，修、齊、治、平”的觀念總是或隱或顯地在影響看你的思想，左右著你的行動，使你最終發現，自己的人生歷程也不過是在這儒學的進修階梯上或近或遠地展開。
-<br>事實上，作為中國知識分子，又有幾人是真正出道入佛的野鶴閑雲、隱逸高士呢？說到底，依然是十人九儒，如此而已。
+<p>這裏所展示的，是儒學<b>三綱八目</b>的追求。
+<br>所謂<b>三綱</b>，是指明明德、新民、止於至善。
+<br>所謂<b>八目</b>，是指格物、致知、誠意、正心、修身、齊家、治國、平天下。
+<br>
+<br>第一章是綱要所在， 朱熹稱為<b>經文</b>，所講訴的是<b>三綱領</b>與<b>八條目</b>的連貫性，由個人之<b>明明德</b>（格物、致知、誠意、正心、修身）做起；發揮到<b>親民</b>（齊家、治國、平天下），以達到<b>止於至善</b>的境地。
+<br>
+<br>三綱領與八條目又可解釋為<b>內聖外王</b>，<b>內聖</b>就是自身的管理與修養；<b>外王</b>是自己對外界的管理與行動。
+<br>以八條目中的<b>修身為根本</b>；
+<br><b>內聖</b>是明明德，包含格物、致知、誠意、正心，<b>是修身的基礎與方法</b>；
+<br><b>外王</b>指的是親民，包含齊家、治國、平天下，<b>是修身的目的</b>。
 </p>
 </section>
 </article>
 <footer>
-<a href="#" class="backTop">頂部</a>
-<a href="">目錄</a>
-<a href="" title=" 鍵盤左鍵 <- " id="prevPage">上一頁</a>
+<a title=" 鍵盤左鍵 <- " id="prevPage">上一頁</a>
+<a>目錄</a>
+<a id="settingBtn">设置</a>
 <a id="placeholder">占位</a>
-<a href="" title=" 鍵盤右鍵 -> " id="nextPage">下一頁</a>
+<a title=" 鍵盤右鍵 -> " id="nextPage">下一頁</a>
 </footer>
 <div id="code2wmMask">
 <div id="code2wm" style="background:url(http://pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=http://www.8bei8.com/book/daxue_2.html) center center no-repeat" onclick="code2wm(0)"></div>
 </div>
-<script>log=function(){console.log(arguments),$("#debug").html(JSON.stringify(arguments)),$("#debug").css("top",0)},$("#readSet").click(function(){$("#setting").toggleClass("on")}),$("#setting #close").click(function(){$("#setting").removeClass("on")}),sizeChange=function(t){var e=parseInt(localStorage.font_size);"+"==t?e=Math.min(e+1,32):"-"==t&&(e=Math.max(e-1,12)),localStorage.font_size=e,$("body").css("font-size",e),$("#setting #size").text(e+"px")},$("#setting #small").click(function(){sizeChange("-")}),$("#setting #big").click(function(){sizeChange("+")}),weightChange=function(t){var e=parseInt(localStorage.font_weight);"+"==t?e=Math.min(e+100,900):"-"==t&&(e=Math.max(e-100,100)),localStorage.font_weight=e,$("body").css("font-weight",e),$("#setting #weight").text(e)},$("#setting #light").click(function(){weightChange("-")}),$("#setting #bold").click(function(){weightChange("+")}),$("#setting #color b").click(function(){cls=$(this).attr("class"),localStorage.color_plan=cls,$("body").attr("class",cls)}),$("#setting #family b").click(function(){family=$(this).css("font-family"),localStorage.font_family=family,$("body").css("font-family",family)}),localStorage.font_size||(localStorage.font_size=18),sizeChange(""),localStorage.font_weight||(localStorage.font_weight=400),weightChange(""),localStorage.font_family&&$("body").css("font-family",localStorage.font_family),localStorage.color_plan&&$("body").attr("class",localStorage.color_plan),$("#zhushi b").each(function(){var t=$(this).attr("id").replace("wt_",""),e=$("#wr_"+t).parent("span").text();$(this).attr("title",e);var a=$("#wr_"+t).parent("span").html(),i="wr_"+t+'"';a=a.replace(i,i+' style="color:#D44"'),$(this).attr("info",a),$(this).after("：")}),$("#yuanwen u").each(function(){var t=$(this).attr("id").replace("wr_",""),e=$("#wt_"+t).parent("p").text();$(this).attr("title",e);var a=$("#wt_"+t).parent("p").html();$(this).attr("info",a)}),$("#yuanwen span").each(function(){var t=$(this).attr("id").replace("sr_",""),e=$("#st_"+t).text();$(this).attr("title",e),$(this).attr("info",e)}),$("#yiwen span").each(function(){var t=$(this).attr("id").replace("st_",""),e=$("#sr_"+t).text();$(this).attr("title",e),$(this).attr("info",e)}),$("section *").click(function(t){t.stopPropagation(),status=$(this).attr("class"),$("section *").removeClass("selected"),info=$(this).attr("info"),"selected"!=status&&info?($(this).addClass("selected"),$("#debug").html(info),$("#debug").css("top",0)):$("#debug").css("top","-50%")}),$("#debug").click(function(){$(this).css("top","-50%"),$("section *").removeClass("selected")})</script>
 </body>
 </html>
