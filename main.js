@@ -88,12 +88,12 @@ if (!localStorage.font_weight) {
 weightChange('')
 
 if (!localStorage.font_family) {
-    localStorage.font_family = 'paper'
+    localStorage.font_family = 'sans-serif'
 }
 $('body').css('font-family', localStorage.font_family)
 
 if (!localStorage.color_plan) {
-    localStorage.color_plan = 'sans-serif'
+    localStorage.color_plan = 'paper'
 }
 $('body').attr('class', localStorage.color_plan)
 $('#debug').attr('class', localStorage.color_plan)
